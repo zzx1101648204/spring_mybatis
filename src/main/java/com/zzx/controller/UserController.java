@@ -32,10 +32,7 @@ public class UserController {
     public ModelAndView gets(HttpServletResponse httpServletResponse) throws IOException {
         ModelAndView mv = new ModelAndView();
         User user = userService.selectByPrimaryKey(1);
-
-
         //    mv.addObject("hello", "欢迎学习springmvc！");
-
         //返回物理视图
         //mv.setViewName("/WEB-INF/jsps/index.jsp");
         mv.setViewName("first");
