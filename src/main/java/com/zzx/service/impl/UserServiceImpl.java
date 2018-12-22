@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     @Cacheable(value = "myCache")
     public User selectByPrimaryKey(Integer id) {
-        System.out.println("从数据库获取数据");
+        System.out.println("使用SpringMVC缓存，从数据库获取数据");
         return userMapper.selectByPrimaryKey(id);
     }
 

@@ -1,9 +1,11 @@
 package com.zzx.controller;
 
-import com.zzx.dao.User_Mapper;
+import com.zzx.dao.UserDao;
 import com.zzx.entity.All;
 import com.zzx.entity.User;
 import com.zzx.service.UserService;
+import com.zzx.service.impl.UserServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,13 +22,14 @@ import java.util.List;
  * Created by:  John Zhu
  * Date: 2018/9/11 15:51
  **/
+@Slf4j
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
     @Autowired
-    private User_Mapper user_mapper;
+    UserDao userDao;
 
     @GetMapping("/get")
     public ModelAndView gets(HttpServletResponse httpServletResponse) throws IOException {
@@ -57,8 +60,8 @@ public class UserController {
     @ResponseBody
     @GetMapping("/all")
     public Object all(String cupSize){
-        List<All> all=user_mapper.gets(cupSize);
-        System.out.println(all.get(0).getCupSize());
+        System.out.println("开启二Mybatis级缓存");
+        Object all=userDao.gets(cupSize);
         return all;
     }
 }
