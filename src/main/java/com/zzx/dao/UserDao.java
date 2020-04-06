@@ -12,6 +12,6 @@ import java.util.List;
  **/
 @Mapper
 public interface UserDao {
-    @Select("SELECT  a.* ,b.user_id,b.cup_size,b.age,b.height FROM user a inner join girl b ON a.id=b.user_id WHERE b.cup_size=#{cupSize}")
-    List<All> gets(@Param("cupSize") String cupSize);
+    @Select("SELECT * FROM girl WHERE id=#{id}")
+    List<All> gets(@Param("id") String id);
 }

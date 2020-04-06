@@ -5,7 +5,6 @@ import com.zzx.entity.All;
 import com.zzx.entity.User;
 import com.zzx.service.UserService;
 import com.zzx.service.impl.UserServiceImpl;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,7 @@ import java.util.List;
  * Created by:  John Zhu
  * Date: 2018/9/11 15:51
  **/
-@Slf4j
+
 @Controller
 public class UserController {
 
@@ -59,9 +58,10 @@ public class UserController {
 
     @ResponseBody
     @GetMapping("/all")
-    public Object all(String cupSize){
+    public Object all(String id){
         System.out.println("开启二Mybatis级缓存");
-        Object all=userDao.gets(cupSize);
+        Object all=userDao.gets(id);
+        System.out.println(all);
         return all;
     }
 }

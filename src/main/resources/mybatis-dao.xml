@@ -16,9 +16,9 @@
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://123.207.231.159:3306/hibernate"/>
-        <property name="username" value="root"/>
-        <property name="password" value="1161260131"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/hibernate?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;autoReconnectForPools=true&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false"/>
+        <property name="username" value=""/>
+        <property name="password" value=""/>
     </bean>
     <!--3.配置SqlSessionFactory对象-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

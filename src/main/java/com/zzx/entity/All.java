@@ -1,41 +1,29 @@
 package com.zzx.entity;
 
-import lombok.Data;
+
 
 import java.util.Date;
 
 /**
  * Created by Mr.John on 2018/11/25 12:01.
  **/
-@Data
+
 public class All {
     private Integer id;
 
-    private Integer userId;
-
     private Integer age;
 
-    private String cupSize;
+    private Integer high;
 
-    private Integer height;
-
-    private String name;
-
-    private String password;
-
-    private Date createdBy;
+    private String number;
 
     @Override
     public String toString() {
         return "All{" +
                 "id=" + id +
-                ", userId=" + userId +
                 ", age=" + age +
-                ", cupSize='" + cupSize + '\'' +
-                ", height=" + height +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", createdBy=" + createdBy +
+                ", high=" + high +
+                ", number='" + number + '\'' +
                 '}';
     }
 
@@ -47,14 +35,6 @@ public class All {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public Integer getAge() {
         return age;
     }
@@ -63,43 +43,19 @@ public class All {
         this.age = age;
     }
 
-    public String getCupSize() {
-        return cupSize;
+    public Integer getHigh() {
+        return high;
     }
 
-    public void setCupSize(String cupSize) {
-        this.cupSize = cupSize;
+    public void setHigh(Integer high) {
+        this.high = high;
     }
 
-    public Integer getHeight() {
-        return height;
+    public String getNumber() {
+        return number;
     }
 
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Date createdBy) {
-        this.createdBy = createdBy;
+    public void setNumber(String number) {
+        this.number = number;
     }
 }
