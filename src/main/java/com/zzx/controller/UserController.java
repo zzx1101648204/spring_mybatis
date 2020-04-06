@@ -7,11 +7,12 @@ import com.zzx.service.UserService;
 import com.zzx.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.dozer.DozerBeanMapper;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -56,12 +57,25 @@ public class UserController {
         return user;
     }
 
+    private static int i=1;
     @ResponseBody
     @GetMapping("/all")
-    public Object all(String id){
+    public All all(String id){
         System.out.println("开启二Mybatis级缓存");
-        Object all=userDao.gets(id);
-        System.out.println(all);
-        return all;
+        List<All> alls=userDao.gets(id);
+        System.out.println(alls);
+        if(!CollectionUtils.isEmpty(alls)){
+           All all=alls.get(0);
+           //bean copy 任务
+            DozerBeanMapper mapper = new DozerBeanMapper();
+            All copy=mapper.map(all,All.class);
+            copy.setAge(26);
+            copy.setHigh(171);
+            copy.setNumber("23");
+            System.out.println(copy.toString());
+            System.out.println(all.toString());
+            return all;
+        }
+         return null;
     }
 }
