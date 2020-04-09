@@ -2,7 +2,9 @@ package com.zzx.controller;
 
 import com.zzx.dao.UserDao;
 import com.zzx.entity.All;
+import com.zzx.entity.Boy;
 import com.zzx.entity.User;
+import com.zzx.service.BoyService;
 import com.zzx.service.UserService;
 import com.zzx.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,9 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
+    @Autowired
+    private BoyService boyService;
 
     @GetMapping("/get")
     public ModelAndView gets(HttpServletResponse httpServletResponse) throws IOException {
@@ -59,7 +63,7 @@ public class UserController {
 
     private static int i=1;
     @ResponseBody
-    @GetMapping("/all")
+    @GetMapping(value = "/all",produces = "application/json;charset=UTF-8")
     public All all(String id){
         System.out.println("开启二Mybatis级缓存");
         List<All> alls=userDao.gets(id);
@@ -77,5 +81,16 @@ public class UserController {
             return all;
         }
          return null;
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/del",produces = "application/json;charset=UTF-8")
+    public int deleteOne(int high){
+        return boyService.deleteByHigh(high);
+    }
+    @ResponseBody
+    @GetMapping(value = "/age",produces = "application/json;charset=UTF-8")
+    public List<Boy> selectByAge(int age){
+        return boyService.selectByAge(age);
     }
 }

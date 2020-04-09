@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzx.dao.BoyDao" >
+
+    <delete id="deleteByHigh" parameterType="java.lang.Integer">
+        delete from boy
+        where high = #{high,jdbcType=INTEGER}
+    </delete>
+<!--    <select id="selectByAge" resultMap="com.zzx.dao.BoyMapper.BaseResultMap" parameterType="java.lang.Integer" >-->
+<!--        select-->
+<!--        <include refid="com.zzx.dao.BoyMapper.Base_Column_List" />-->
+<!--        from boy-->
+<!--        where age = #{age,jdbcType=INTEGER}-->
+<!--    </select>-->
+
+    <select id="selectByAge" resultType="com.zzx.entity.Boy"  >
+        select
+        <include refid="com.zzx.dao.BoyMapper.Base_Column_List" />
+        from boy
+        where age = #{age}
+    </select>
+
+</mapper>
